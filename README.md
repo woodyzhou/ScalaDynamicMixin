@@ -40,5 +40,14 @@ dc.funC shouldBe "function C"
 cd.funD shouldBe "function D"
 dc.funD shouldBe "function D"
 
+val inputs = List(new C, new D, new D, new C)
+val outputs = inputs map {
+  case C(c) => c.funC
+  case D(d) => d.funD
+}
 
+outputs(0) shouldBe "function C"
+outputs(1) shouldBe "function D"
+outputs(2) shouldBe "function D"
+outputs(3) shouldBe "function C"
 ```
